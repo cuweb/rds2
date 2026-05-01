@@ -69,9 +69,8 @@
     height: 80px;
     margin: -4rem 0 0.5rem;
     background: var(--rds--color-white);
-    border: 1px solid var(--rds--color-grey-light);
     border-radius: var(--rds--radius-md);
-    // box-shadow: var(--rds--shadow-natural);
+    box-shadow: var(--rds--shadow-natural);
 }
 
 .cu-card__date-thumb-month {
