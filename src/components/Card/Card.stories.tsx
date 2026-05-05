@@ -4,6 +4,8 @@ import { Main } from '../Main/Main';
 import { Card } from './Card';
 import { Icon } from '../Icon/Icon';
 
+import { Status } from '../Status/Status';
+
 import { NewsData } from '../../data/NewsData';
 import { EventData } from '../../data/EventData';
 import { PeopleData } from '../../data/PeopleData';
@@ -11,6 +13,7 @@ import { PageData } from '../../data/PageData';
 import { VideoData } from '../../data/VideoData';
 import { IconData } from '../../data/IconData';
 import { StatData } from '../../data/StatData';
+import { DiningData } from '../../data/DiningData';
 
 const meta: Meta = {
   title: 'Components/Elements/Card',
@@ -186,6 +189,32 @@ export const StatCards: Story = {
         {StatData.slice(0, 24).map((item) => (
             <Card key={`stat-${item.id}`} leftBorder>
                 <Card.Stats stat={item.stat} desc={item.desc} />
+            </Card>
+        ))}
+      </Column>
+    </Main>
+  ),
+};
+
+export const DiningCards: Story = {
+  render: () => (
+    <Main>
+      <Column cols="3">
+        {DiningData.slice(0, 24).map((item) => (
+            <Card key={`dining-${item.id}`}>
+                <Card.Figure>
+                    <img src={item.image} alt={item.alt} width="600" height="400" />
+                </Card.Figure>
+                <Card.Header
+                    title={item.title}
+                    link={item.link}
+                />
+                <Card.Body>
+                    <Card.Content>
+                        <Status variant="success">Open today until 8:00 PM</Status>
+                        <Card.Excerpt text={item.excerpt} />
+                    </Card.Content>
+                </Card.Body>
             </Card>
         ))}
       </Column>

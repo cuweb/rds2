@@ -3,7 +3,7 @@ import { Column } from '../Column/Column';
 import { Main } from '../Main/Main';
 import { Card } from './Card';
 import { Icon } from '../Icon/Icon';
-// import { Status } from '../Status/Status';
+import { Status } from '../Status/Status';
 
 import { NewsData } from '../../data/NewsData';
 import { EventData } from '../../data/EventData';
@@ -11,6 +11,7 @@ import { PeopleData } from '../../data/PeopleData';
 import { IconData } from '../../data/IconData';
 import { StatData } from '../../data/StatData';
 import { VideoData } from '../../data/VideoData';
+import { DiningData } from '../../data/DiningData';
 
 const meta: Meta = {
   title: 'Components/Elements/Card',
@@ -34,7 +35,7 @@ const person = PeopleData[0];
 const video = VideoData[0];
 const icon = IconData[0];
 const stat = StatData[0];
-// const hours = NewsData[3];
+const dining = DiningData[0];
 // const wave = NewsData[0];
 
 export const Variants: Story = {
@@ -143,17 +144,17 @@ export const Variants: Story = {
         </Card>
 
         {/* Hours card — Status component */}
-        {/* <Card>
+        <Card>
           <Card.Figure>
-            <img src={hours.image} alt={hours.alt} width="400" height="300" />
+            <img src={dining.image} alt={dining.alt} width="400" height="300" />
           </Card.Figure>
-          <Card.Header title={hours.title} link={hours.link} />
+          <Card.Header title={dining.title} link={dining.link} />
           <Card.Body>
             <Card.Content>
               <Status variant="success">Open today until 8:00 PM</Status>
             </Card.Content>
           </Card.Body>
-        </Card> */}
+        </Card>
 
         {/* Wave card — grey background with decorative wave */}
         {/* <Card isGrey hasWave>
