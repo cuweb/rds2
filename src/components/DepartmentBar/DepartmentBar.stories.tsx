@@ -3,7 +3,7 @@ import { DepartmentBar } from './DepartmentBar';
 import { defaultFooterButtons } from '../../data/FooterData';
 
 const meta: Meta<typeof DepartmentBar> = {
-  title: 'Components/Elements/Department Bar',
+  title: 'Components/Navigation/Department Bar',
   component: DepartmentBar,
   tags: ['autodocs'],
   parameters: {
