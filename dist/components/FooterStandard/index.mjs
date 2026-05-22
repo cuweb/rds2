@@ -1,6 +1,6 @@
-import { t as e } from "../_shared/useLinkContext-C5AE1VVc.mjs";
-import { t } from "../_shared/Icon-DNHgaxbw.mjs";
-import { t as n } from "../_shared/styles-CgdEW3wH.mjs";
+import { t as e } from "../_shared/useLinkContext-C6Tt2S8U.mjs";
+import { t } from "../_shared/Icon-BxlTg0gG.mjs";
+import { t as n } from "../_shared/styles-l1sKPBiB.mjs";
 import { jsx as r, jsxs as i } from "react/jsx-runtime";
 //#region src/data/FooterData.ts
 var a = "Carleton University acknowledges the location of its campus on the traditional, unceded territories of the Algonquin Anishinàbeg nation", o = {

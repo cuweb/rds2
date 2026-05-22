@@ -1,13 +1,10 @@
-name: Publish Package to NPM
+# Superseded by gh-publish.yml — publishing now goes to GitHub Packages.
+# Kept for reference only; workflow_dispatch allows manual runs if needed.
+
+name: Publish as NPM Package
 
 on:
-  push:
-    branches: [develop]
-
-# on:
-#   push:
-#     tags:
-#       - '*'
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -27,13 +24,11 @@ jobs:
           node-version-file: .nvmrc
           cache: 'pnpm'
 
-      # Each registry line reads ${NODE_AUTH_TOKEN} at request time, so the
-      # install step (NODE_AUTH_TOKEN = GITHUB_TOKEN) authenticates to GitHub
-      # Packages, and the publish step (NODE_AUTH_TOKEN = NPM_TOKEN) authenticates
-      # to npmjs.org. The unused registry per step is harmless.
-      - name: Configure registry auth
+      - name: Configure GitHub Packages auth
         run: |
-          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -44,7 +39,5 @@ jobs:
       - run: pnpm exec playwright install chromium --with-deps
       - run: pnpm test --run
 
-      # npm 11.5.1+ implements the GitHub → npm OIDC exchange used by
-      # Trusted Publishing. pnpm publish does not, so we use npm here.
       - run: npm install -g npm@latest
       - run: npm publish --access public --provenance
