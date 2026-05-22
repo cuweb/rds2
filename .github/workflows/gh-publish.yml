@@ -1,0 +1,61 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - 'change/build-output'
+    tags:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      dist_tag:
+        description: 'npm dist-tag to publish with (for example: beta1, beta2)'
+        required: false
+        default: ''
+        type: string
+
+# on:
+#   push:
+#     tags:
+#       - '*'
+#   workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@cuweb'
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - name: Publish package
+        run: |
+          DIST_TAG="${{ github.event.inputs.dist_tag }}"
+
+          if [ -n "$DIST_TAG" ]; then
+            echo "Publishing with custom dist-tag: $DIST_TAG"
+            pnpm publish --access restricted --no-git-checks --tag "$DIST_TAG"
+          elif [ "${{ github.ref_type }}" = 'branch' ]; then
+            echo 'Publishing branch build with dist-tag: beta'
+            pnpm publish --access restricted --no-git-checks --tag beta
+          else
+            echo 'Publishing tag build with default dist-tag: latest'
+            pnpm publish --access restricted --no-git-checks
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
