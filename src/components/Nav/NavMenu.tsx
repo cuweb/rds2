@@ -112,8 +112,10 @@ export const NavMenu = ({ menu }: NavMenuProps) => {
     };
   }, []);
 
-  const handleToggle = (title: string) =>
+  const handleToggle = (title: string) => {
+    setBrowseOpen(false);
     setOpenDropdown((prev) => (prev === title ? null : title));
+  };
 
   const count = isMobile ? 0 : (visibleCount ?? menu.length);
   const primaryItems = menu.slice(0, count);
@@ -148,7 +150,7 @@ export const NavMenu = ({ menu }: NavMenuProps) => {
       <button
         ref={browseButtonRef}
         className={`cu-nav__browse${isGhost ? ' cu-nav__browse--ghost' : ''}`}
-        onClick={() => !isGhost && setBrowseOpen((prev) => !prev)}
+        onClick={() => { if (!isGhost) { setOpenDropdown(null); setBrowseOpen((prev) => !prev); } }}
         aria-expanded={isGhost ? undefined : browseOpen}
         aria-haspopup={isGhost ? undefined : 'true'}
         aria-hidden={isGhost || undefined}
