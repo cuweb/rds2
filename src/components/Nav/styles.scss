@@ -22,11 +22,7 @@
 .cu-nav__inner {
   display: flex;
   flex-direction: column;
-  padding-inline: var(--rds--spacing-medium);
-
-  @media (min-width: $rds-media-query-sm) {
-    padding-inline: var(--rds--spacing-large);
-  }
+  padding-inline: var(--rds--spacing-large);
 }
 
 // ---------------------------------------------------------------------------

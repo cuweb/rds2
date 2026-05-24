@@ -1,9 +1,9 @@
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 
 const CU_LOGO_FULL =
-  'https://cu-production.s3.amazonaws.com/rds/assets/cu-logos/cu-logo-color-right-horiztonal.svg';
+  'https://cdn.carleton.ca/rds/assets/cu-logos/cu-logo-color-right-horiztonal.svg';
 const CU_LOGO_SHIELD =
-  'https://cu-production.s3.amazonaws.com/rds/assets/cu-logos/cu-shield-color.svg';
+  'https://cdn.carleton.ca/rds/assets/cu-logos/cu-shield-color.svg';
 
 export interface NavLogoProps {
   title?: string;
