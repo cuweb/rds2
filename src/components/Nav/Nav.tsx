@@ -54,13 +54,18 @@ const NavWrapper = ({ children }: NavProps) => {
   const isMobile = useIsMobile();
   const headerRef = useRef<HTMLElement>(null);
 
-  // On scroll down, slide the white top row (logo + site title) fully up out of
-  // view so the secondary Nav.Bottom strip pins flush to the top (the fixed red
-  // accent line stays put above it). The header stays sticky; we shift its `top`
-  // by the strip's offset so the top row slides off with no gap. With no bottom
-  // strip, the whole header slides up instead. Shifting `top` (not display) keeps
-  // the header's footprint, so page content below never jumps. Scrolling up
-  // restores the top row.
+  // On scroll down, slide the white top row (logo) fully up out of view so the
+  // secondary nav strip pins flush to the top (the fixed red accent line stays
+  // put above it). The header stays sticky; we shift its `top` by the strip's
+  // offset so the logo row slides off with no gap. Scrolling up restores it.
+  //
+  // Shift anchor — the element whose top edge should end up at y=0:
+  //   1. Nav.Bottom composition — use `.cu-nav__bottom` (always in the DOM).
+  //   2. Top-only on mobile — the menu/buttons shift to CSS grid row 2 inside
+  //      Nav.Top, creating a grey bar. We measure the logo's *bottom* edge
+  //      (= top of row 2) rather than the menu's top, because `align-items:center`
+  //      on the grid can push the menu element below the row's actual start.
+  //   3. No secondary strip — shift the full header height (original fallback).
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
@@ -69,10 +74,16 @@ const NavWrapper = ({ children }: NavProps) => {
     const handleScroll = () => {
       const currentY = window.scrollY;
       if (currentY > lastY && !hidden) {
-        const bottom = header.querySelector<HTMLElement>('.cu-nav__bottom');
-        const shift = bottom
-          ? bottom.getBoundingClientRect().top - header.getBoundingClientRect().top
-          : header.offsetHeight;
+        const headerTop = header.getBoundingClientRect().top;
+        const bottomEl = header.querySelector<HTMLElement>('.cu-nav__bottom');
+        const shift = (() => {
+          if (bottomEl) return bottomEl.getBoundingClientRect().top - headerTop;
+          if (isMobile) {
+            const logo = header.querySelector<HTMLElement>('.cu-nav__logo');
+            if (logo) return logo.getBoundingClientRect().bottom - headerTop;
+          }
+          return header.offsetHeight;
+        })();
         if (currentY > shift) {
           hidden = true;
           header.style.top = `-${shift}px`;
@@ -84,8 +95,13 @@ const NavWrapper = ({ children }: NavProps) => {
       lastY = currentY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      // Reset position when switching between mobile/desktop so the header
+      // never gets stuck mid-shift after a viewport resize.
+      header.style.top = '';
+    };
+  }, [isMobile]);
 
   const content = isMobile ? moveButtonsIntoBottom(children) : children;
 
