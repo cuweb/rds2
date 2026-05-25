@@ -112,8 +112,14 @@ export const NavMenu = ({ menu }: NavMenuProps) => {
     };
   }, []);
 
-  const handleToggle = (title: string) => {
+  // Primary nav items: close the browse dropdown when opening a sibling.
+  const handlePrimaryToggle = (title: string) => {
     setBrowseOpen(false);
+    setOpenDropdown((prev) => (prev === title ? null : title));
+  };
+
+  // Browse dropdown items: toggle the submenu without closing the browse panel.
+  const handleBrowseToggle = (title: string) => {
     setOpenDropdown((prev) => (prev === title ? null : title));
   };
 
@@ -141,7 +147,7 @@ export const NavMenu = ({ menu }: NavMenuProps) => {
             key={item.title}
             item={item}
             isOpen={openDropdown === item.title}
-            onToggle={() => handleToggle(item.title)}
+            onToggle={() => handlePrimaryToggle(item.title)}
           />
         ))}
       </ul>
@@ -170,7 +176,7 @@ export const NavMenu = ({ menu }: NavMenuProps) => {
               key={item.title}
               item={item}
               isOpen={openDropdown === item.title}
-              onToggle={() => handleToggle(item.title)}
+              onToggle={() => handleBrowseToggle(item.title)}
               variant="mobile"
             />
           ))}
