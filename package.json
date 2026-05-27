@@ -22,8 +22,8 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./styles": "./dist/style.css",
     "./styles.css": "./dist/style.css",
+    "./cutheme.css": "./dist/cutheme/cutheme.css",
     "./tokens.css": "./dist/cutheme/tokens.css",
     "./base-styles.css": "./dist/cutheme/base-styles.css",
     "./layout.css": "./dist/cutheme/layout.css",
@@ -33,25 +33,24 @@
       "import": "./dist/vanilla-js/videoCard.mjs",
       "default": "./dist/vanilla-js/videoCard.js"
     },
-    "./vanilla-js/videoCard.js": "./dist/vanilla-js/videoCard.js",
     "./vanilla-js/cuMotion": {
       "import": "./dist/vanilla-js/cuMotion.mjs",
       "default": "./dist/vanilla-js/cuMotion.js"
     },
-    "./vanilla-js/cuMotion.js": "./dist/vanilla-js/cuMotion.js",
     "./*": {
       "types": "./dist/components/*/index.d.ts",
       "import": "./dist/components/*/index.mjs",
       "require": "./dist/components/*/index.cjs"
     },
-    "./*.css": "./dist/components/*/styles.css"
+    "./*.css": "./dist/components/*/styles.css",
+    "./*.scss": "./dist/components/*/styles.scss"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "npm run assets && npm run c2b && storybook dev -p 6006",
-    "build": "npm run assets && vite build && vite build -c vite.config.components.ts && vite build -c vite.config.vanilla.ts && vite build -c vite.config.vanilla-motion.ts && node scripts/build-components-scss.mjs && node scripts/build-components-dts.mjs && npm run c2b && node scripts/build-inject-fonts.mjs",
+    "build": "npm run assets && vite build && vite build -c vite.config.components.ts && vite build -c vite.config.vanilla.ts && vite build -c vite.config.vanilla-motion.ts && node scripts/build-components-scss.mjs && node scripts/build-components-dts.mjs && npm run c2b && node scripts/build-inject-fonts.mjs && node scripts/build-cutheme-aggregate.mjs && node scripts/build-cleanup.mjs",
     "build-storybook": "npm run assets && storybook build",
     "assets": "node scripts/build-assets.mjs",
     "c2b": "c2b generate",
