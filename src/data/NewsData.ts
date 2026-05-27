@@ -12,7 +12,7 @@ export const NewsData = [
     id: 2,
     link: '#',
     title: 'Designing Accessible Interfaces',
-    image: 'https://picsum.photos/seed/news2/600/400',
+    image: 'https://picsum.photos/seed/news2/400/300',
     alt: 'News article thumbnail',
     excerpt: 'Accessibility starts early: strong contrast, clear focus states, and components that behave with keyboards.',
     date: '2026-02-04 14:30:00',
