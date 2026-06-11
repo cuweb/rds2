@@ -12,6 +12,8 @@ export { Section } from './components/Section/Section';
 // Components
 export { Quote } from './components/Quote/Quote';
 export type { QuoteProps } from './components/Quote/Quote';
+export { Testimonial } from './components/Testimonial/Testimonial';
+export type { TestimonialProps } from './components/Testimonial/Testimonial';
 export { CallOut } from './components/CallOut/CallOut';
 export type { CallOutProps } from './components/CallOut/CallOut';
 export { Figure } from './components/Figure/Figure';

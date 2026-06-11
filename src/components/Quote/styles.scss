@@ -34,10 +34,9 @@
 
   &__cite {
     display: block;
-    margin-top: var(--rds--spacing-x-small);
-    font-style: normal;
     font-size: var(--rds--font-size-small);
-    font-weight: var(--rds--font-weight-semibold);
-    color: var(--rds--color-grey-dark);
+    font-weight: var(--rds--font-weight-light);
+    font-style: normal;
+    margin-top: var(--rds--spacing-x-small);
   }
 }
