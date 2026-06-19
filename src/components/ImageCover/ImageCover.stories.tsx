@@ -3,18 +3,17 @@ import { Main } from '../Main/Main';
 import { ImageCover } from './ImageCover';
 import { MultiParagraph } from '../../data/storyContent';
 
+const SAMPLE_IMAGE = 'https://picsum.photos/id/1074/1920/840';
+
 const meta: Meta<typeof ImageCover> = {
   title: 'Components/Layout/Image Cover',
   component: ImageCover,
   tags: ['!autodocs'],
-  decorators: [
-    (Story) => (
-      <Main>
-        <Story />
-      </Main>
-    ),
-  ],
   argTypes: {
+    as: {
+      control: 'inline-radio',
+      options: ['section', 'div'],
+    },
     maxWidth: {
       control: 'select',
       options: ['aligncontent', 'alignwide', 'alignfull'],
@@ -25,13 +24,7 @@ const meta: Meta<typeof ImageCover> = {
       description: 'false = 1024px (content), true = 1280px (wide)',
     },
     opacity: {
-      control: { type: 'range', min: 50, max: 100, step: 5 },
-    },
-    focalPointX: {
-      control: { type: 'range', min: 0, max: 100, step: 1 },
-    },
-    focalPointY: {
-      control: { type: 'range', min: 0, max: 100, step: 1 },
+      control: { type: 'range', min: 0, max: 100, step: 5 },
     },
   },
   parameters: {
@@ -43,94 +36,62 @@ const meta: Meta<typeof ImageCover> = {
 export default meta;
 type Story = StoryObj<typeof ImageCover>;
 
-export const Primary: Story = {
-  args: {
-    image: 'https://picsum.photos/id/1074/1920/840',
-    opacity: 85,
-    focalPointX: 50,
-    focalPointY: 50,
-    maxWidth: 'aligncontent',
-  },
+export const Default: Story = {
   render: (args) => (
-    <ImageCover {...args}>
-      <MultiParagraph count={5} />
-    </ImageCover>
+    <Main>
+      <ImageCover {...args}>
+        <MultiParagraph count={2} />
+      </ImageCover>
+    </Main>
   ),
 };
 
-export const AlignFull: Story = {
-  args: {
-    image: 'https://picsum.photos/id/338/1920/840',
-    opacity: 85,
-    focalPointX: 50,
-    focalPointY: 50,
-    maxWidth: 'alignfull',
-  },
-  render: (args) => (
-    <ImageCover {...args}>
-      <MultiParagraph count={5} />
-    </ImageCover>
+export const WithImage: Story = {
+  render: () => (
+    <Main>
+      <ImageCover image={SAMPLE_IMAGE} isGrey>
+        <MultiParagraph count={2} />
+      </ImageCover>
+    </Main>
   ),
 };
 
-export const AlignFullConstrainedContent: Story = {
-  args: {
-    image: 'https://picsum.photos/id/338/1920/840',
-    opacity: 85,
-    focalPointX: 50,
-    focalPointY: 50,
-    maxWidth: 'alignfull',
-    contentWidth: false,
-  },
-  render: (args) => (
-    <ImageCover {...args}>
-      <MultiParagraph count={5} />
-    </ImageCover>
+export const FullWidth: Story = {
+  render: () => (
+    <Main>
+      <ImageCover image={SAMPLE_IMAGE} isGrey maxWidth="alignfull">
+        <MultiParagraph count={2} />
+      </ImageCover>
+    </Main>
   ),
 };
 
-export const AlignFullWideContent: Story = {
-  args: {
-    image: 'https://picsum.photos/id/338/1920/840',
-    opacity: 85,
-    focalPointX: 50,
-    focalPointY: 50,
-    maxWidth: 'alignfull',
-    contentWidth: true,
-  },
-  render: (args) => (
-    <ImageCover {...args}>
-      <MultiParagraph count={5} />
-    </ImageCover>
+export const FullWidthConstrained: Story = {
+  render: () => (
+    <Main>
+      <ImageCover image={SAMPLE_IMAGE} isGrey maxWidth="alignfull" contentWidth={false}>
+        <MultiParagraph count={2} />
+      </ImageCover>
+    </Main>
   ),
 };
 
-export const WithFocalPoint: Story = {
-  args: {
-    image: 'https://picsum.photos/id/1015/1920/840',
-    opacity: 85,
-    focalPointX: 80,
-    focalPointY: 20,
-    maxWidth: 'alignwide',
-  },
-  render: (args) => (
-    <ImageCover {...args}>
-      <MultiParagraph count={5} />
-    </ImageCover>
+export const FullWidthConstrainedWide: Story = {
+  render: () => (
+    <Main>
+      <ImageCover image={SAMPLE_IMAGE} isGrey maxWidth="alignfull" contentWidth>
+        <MultiParagraph count={2} />
+      </ImageCover>
+    </Main>
   ),
 };
 
 export const CustomOpacity: Story = {
-  args: {
-    image: 'https://picsum.photos/id/20/1920/840',
-    opacity: 65,
-    focalPointX: 50,
-    focalPointY: 50,
-    maxWidth: 'aligncontent',
-  },
-  render: (args) => (
-    <ImageCover {...args}>
-      <MultiParagraph count={5} />
-    </ImageCover>
+  render: () => (
+    <Main>
+      <ImageCover image={SAMPLE_IMAGE} isGrey opacity={60}>
+        <MultiParagraph count={2} />
+      </ImageCover>
+    </Main>
   ),
 };

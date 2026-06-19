@@ -3,15 +3,45 @@
 .cu-imagecover {
   position: relative;
   overflow: hidden;
-  background-color: var(--rds--color-grey-pale);
+  isolation: isolate;
   background-image: var(--cu-imagecover-bg, none);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: var(--cu-imagecover-focal-x, 50%) var(--cu-imagecover-focal-y, 50%);
+  background-position: 50% 50%;
+  background-color: var(--rds--color-grey-pale);
+  padding: var(--rds--spacing-large);
+  padding-block-end: var(--rds--spacing-2-x-large);
+}
 
-  &.aligncontent {
-    border-radius: var(--rds--radius-xl);
+.cu-imagecover > .has-global-padding,
+.has-global-padding > .cu-imagecover.alignfull > .has-global-padding {
+  padding-left: 0;
+  padding-right: 0;
+
+  > *:first-child {
+    margin-top: 0;
   }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  > * + * {
+    margin-block-start: var(--rds--spacing-medium);
+    margin-block-end: 0;
+  }
+}
+
+.cu-imagecover--grey:not(.alignfull) {
+  border-radius: var(--rds--radius-xl);
+}
+
+.cu-main .cu-imagecover--grey.alignfull:last-child {
+  margin-bottom: calc(-1 * var(--rds--spacing-large));
+}
+
+.cu-main .cu-imagecover--grey.alignfull:first-child {
+  margin-top: calc(-1 * var(--rds--spacing-large));
 }
 
 .cu-imagecover__wave {
@@ -25,7 +55,7 @@
   background-position: bottom;
   background-size: 200px;
   pointer-events: none;
-  z-index: 1;
+  z-index: -2;
 
   @media (min-width: $rds-media-query-md) {
     background-size: 300px;
@@ -41,24 +71,5 @@
   inset: 0;
   background-color: var(--cu-imagecover-overlay, rgba(255, 255, 255, 0.85));
   pointer-events: none;
-  z-index: 2;
-}
-
-.cu-imagecover__content {
-  position: relative;
-  z-index: 3;
-  padding-block: var(--rds--spacing-large) var(--rds--spacing-2-x-large);
-
-  @media (min-width: $rds-media-query-md) {
-    padding-block: var(--rds--spacing-x-large) calc(var(--rds--spacing-2-x-large) * 1.25);
-  }
-
-  @media (min-width: $rds-media-query-lg) {
-    padding-block: var(--rds--spacing-2-x-large) calc(var(--rds--spacing-2-x-large) * 1.5);
-  }
-}
-
-.cu-imagecover__inner > * + * {
-  margin-block-start: var(--rds--spacing-medium);
-  margin-block-end: 0;
+  z-index: -1;
 }
