@@ -17,7 +17,6 @@ import { Figure } from '../components/Figure';
 import { ImageCover } from '../components/ImageCover';
 import { Embed } from '../components/Embed';
 import { Testimonial } from '../components/Testimonial';
-import { ImageGrid } from '../components/ImageGrid';
 
 import { largeNavData } from '../data/NavigationData';
 import { NewsData } from '../data/NewsData';
@@ -184,16 +183,7 @@ export const Homepage: Story = {
                         size="lg"
                     />
 
-                    <ImageGrid cols="3" gap="sm" maxWidth="alignwide">
-                        <ImageGrid.Image imageUrl={ImageData[2].image} colSpan="2" rowSpan="2" title="Overlay Image Title" content="Lorem ipsum odor amet, consectetuer adipiscing elit. Porta pulvinar consectetur faucibus fusce scelerisque nulla!" link="https://carleton.ca" />
-                        {ImageData.slice(3, 5).map(({
-                            id,
-                            image
-                        }: {
-                            id: number;
-                            image: string;
-                        }) => <ImageGrid.Image key={id} imageUrl={image} />)}
-                    </ImageGrid>
+                    <p>Add image grid</p>
 
                     <Testimonial
                         cite="Jane Doe"
