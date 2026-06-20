@@ -60,12 +60,15 @@ export const PageLayout: Story = {
             </Nav>
 
             <Main>
-                <PageHeader
-                    as="h1"
-                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius feugiat euismod. Ut ut diam dapibus nisi ullamcorper sollicitudin id vitae turpis."
-                    header="Page Template"
-                    size="primary"
-                />
+                <Section maxWidth='alignfull' isGrey>
+                    <PageHeader
+                        as="h1"
+                        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius feugiat euismod. Ut ut diam dapibus nisi ullamcorper sollicitudin id vitae turpis."
+                        header="Page Template"
+                        size="primary"
+                        noUnderline
+                    />
+                </Section>
 
                 <p>
                 This is an example page. It is different from a blog post because it will stay in one

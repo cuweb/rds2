@@ -68,6 +68,11 @@
           "slug": "custom-dark-grey-to-black",
           "gradient": "linear-gradient(135deg,rgb(118,118,118) 0%,rgb(25,25,25) 100%)",
           "name": "Dark Grey To Black"
+        },
+        {
+          "slug": "custom-white-to-pale-grey",
+          "gradient": "linear-gradient(135deg,rgb(250,250,250) 0%,rgb(240,240,240) 100%)",
+          "name": "White To Pale Grey"
         }
       ]
     },
