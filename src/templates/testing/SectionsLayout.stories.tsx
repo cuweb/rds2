@@ -1,27 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Main } from '../components/Main/Main';
-import { Section } from '../components/Section/Section';
-import { Nav } from '../components/Nav/Nav';
-import { FooterStandard } from '../components/FooterStandard';
-import { CookieBanner } from '../components/CookieBanner';
-import { PageHeader } from '../components/PageHeader';
-import { Quote } from '../components/Quote';
-import { WideWave } from '../components/WideWave';
-import { largeNavData } from '../data/NavigationData';
-import { MultiParagraph } from '../data/storyContent';
+    import type { Meta, StoryObj } from '@storybook/react-vite';
+    import { Main } from '../../components/Main/Main';
+    import { Section } from '../../components/Section/Section';
+    import { Nav } from '../../components/Nav/Nav';
+    import { FooterStandard } from '../../components/FooterStandard';
+    import { CookieBanner } from '../../components/CookieBanner';
+    import { PageHeader } from '../../components/PageHeader';
+    import { CallOut } from '../../components/CallOut';
+    import { ButtonGroup } from '../../components/ButtonGroup';
+    import { Button } from '../../components/Button';
+    import { largeNavData } from '../../data/NavigationData';
 
-const meta: Meta = {
-    title: 'Overview/Templates/Page Layout',
-    parameters: {
-        layout: 'fullscreen',
-    },
-    tags: ['!autodocs'],
-};
+    const meta: Meta = {
+        title: 'Overview/Templates/Testing/Sections Layout',
+        parameters: {
+            layout: 'fullscreen',
+        },
+        tags: ['!autodocs'],
+    };
 
-export default meta;
-type Story = StoryObj;
+    export default meta;
+    type Story = StoryObj;
 
-export const PageLayout: Story = {
+    const SinglePara = () => (
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet tortor pellentesque,
+            posuere tellus vitae, sagittis justo. Vivamus imperdiet turpis nec elit ultricies,{' '}
+            <a href="https://carleton.ca">sed tempus diam dignissim</a>. Suspendisse condimentum magna vel
+            orci vulputate, eget vulputate neque porttitor. Suspendisse euismod, urna et gravida volutpat,
+            tortor risus vehicula nisl, in vulputate lectus dolor viverra est.
+        </p>
+    );
+
+    export const SectionsLayout: Story = {
     parameters: {
         a11y: {
             config: {
@@ -52,63 +62,59 @@ export const PageLayout: Story = {
             </Nav>
 
             <Main>
-                <Section maxWidth='alignfull' bgType="light-gradient" isHero>
-                    <PageHeader
-                        as="h1"
-                        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius feugiat euismod. Ut ut diam dapibus nisi ullamcorper sollicitudin id vitae turpis."
-                        header="Page Template"
-                        size="primary"
-                        noUnderline
-                    />
-                </Section>
+                <PageHeader
+                    as="h1"
+                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius feugiat euismod. Ut ut diam dapibus nisi ullamcorper sollicitudin id vitae turpis."
+                    header="Page Template"
+                    size="primary"
+                />
 
+                <SinglePara />
                 <p>
                 This is an example page. It is different from a blog post because it will stay in one
                 place and will show up in your site navigation (in most themes). Most people start with an
                 About page that introduces them to potential site visitors. It might say something like
                 this:
                 </p>
-                <MultiParagraph count={1} />
 
-                <h2>Heading Two</h2>
-                <MultiParagraph count={2} />
-                <Quote
-                    cite="John Doe"
-                    graphic="border"
-                >
-                    <MultiParagraph count={1} />
-                </Quote>
-                <MultiParagraph count={2} />
+                <SinglePara />
 
-                <WideWave>
-                    <MultiParagraph count={2} />
-                </WideWave>
+                <PageHeader
+                    as="h2"
+                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius feugiat euismod. Ut ut diam dapibus nisi ullamcorper sollicitudin id vitae turpis."
+                    header="Page Template"
+                    size="lg"
+                />
 
-                <MultiParagraph count={2} />
+                <SinglePara />
+                <SinglePara />
 
-                <Section as="section" maxWidth="alignwide" bgType="grey">
-                    <h2>Heading Two</h2>
-                    <MultiParagraph count={2} />
-                    <Quote
-                        cite="John Doe"
-                        graphic="border"
+                <PageHeader
+                    as="h2"
+                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius feugiat euismod. Ut ut diam dapibus nisi ullamcorper sollicitudin id vitae turpis."
+                    header="Page Template"
+                    size="lg"
+                />
+
+                <CallOut
+                    as="h2"
+                    justify="center"
+                    maxWidth="aligncontent"
+                    title="Open House"
                     >
-                        <MultiParagraph count={1} />
-                    </Quote>
-                    <MultiParagraph count={2} />
-                </Section>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut porta magna. Fusce id viverra
+                        mi. Etiam mollis feugiat nisl, sit amet tempor ante scelerisque vitae. Proin non bibendum
+                        dolor.
+                    </p>
+                    <ButtonGroup>
+                        <Button title="Apply Now" />
+                        <Button color="grey" title="Request Information" />
+                    </ButtonGroup>
+                </CallOut>
 
-                <h3>Heading Three</h3>
-                <MultiParagraph count={1} />
-
-                <h4>Heading Four</h4>
-                <MultiParagraph count={1} />
-
-                <h5>Heading Five</h5>
-                <MultiParagraph count={1} />
-
-                <h6>Heading Six</h6>
-                <MultiParagraph count={1} />
+                <SinglePara />
+                <SinglePara />
 
                 <h2>Unordered List</h2>
                 <ul>
@@ -137,7 +143,7 @@ export const PageLayout: Story = {
                 <li>Vivamus imperdiet turpis nec elit ultricies, sed tempus diam dignissim.</li>
                 </ul>
 
-                <MultiParagraph count={1} />
+                <SinglePara />
 
                 <h2>Ordered List</h2>
                 <ol>
@@ -156,7 +162,7 @@ export const PageLayout: Story = {
                 <li>Vivamus imperdiet turpis nec elit ultricies, sed tempus diam dignissim.</li>
                 </ol>
 
-                <MultiParagraph count={1} />
+                <SinglePara />
 
                 <p>
                 Hi there! I am a bike messenger by day, aspiring actor by night, and this is my website. I
@@ -164,7 +170,7 @@ export const PageLayout: Story = {
                 caught in the rain.)
                 </p>
 
-                <MultiParagraph count={1} />
+                <SinglePara />
 
                 <Section as="section" maxWidth="alignwide" bgType="grey">
                     <PageHeader
@@ -182,7 +188,7 @@ export const PageLayout: Story = {
                     </p>
                 </Section>
 
-                <MultiParagraph count={1} />
+                <SinglePara />
 
                 <Section as="section">
                     <PageHeader
@@ -200,7 +206,7 @@ export const PageLayout: Story = {
                     </p>
                 </Section>
 
-                <MultiParagraph count={1} />
+                <SinglePara />
 
                 <Section as="section" maxWidth="alignfull" bgType="grey">
                     <PageHeader

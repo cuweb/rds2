@@ -26,7 +26,7 @@ import { ImageData } from '../data/ImageData';
 import { MultiParagraph } from '../data/storyContent';
 
 const meta: Meta = {
-    title: 'Overview/Templates/Homepage',
+    title: 'Overview/Templates/Carleton Homepage',
     parameters: {
         layout: 'fullscreen',
     },
@@ -36,7 +36,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Homepage: Story = {
+export const CarletonHomepage: Story = {
     parameters: {
         a11y: {
             config: {
