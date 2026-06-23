@@ -31,6 +31,8 @@ export { Quote, type QuoteProps } from './components/Quote/Quote';
 export { StackedList, type StackedListProps } from './components/StackedList';
 export { Testimonial, type TestimonialProps } from './components/Testimonial/Testimonial';
 export { Table, type TableProps, type ColumnDefinitionType } from './components/Table/Table';
+export { TextImage, type TextImageProps } from './components/TextImage/TextImage';
+export type { TextImageContentProps, ImageMode } from './components/TextImage/TextImageContent';
 export { Timeline, type TimelineProps } from './components/Timeline/Timeline';
 export type { TimelineItemProps } from './components/Timeline/TimelineItem';
 
