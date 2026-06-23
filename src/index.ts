@@ -33,6 +33,9 @@ export { Testimonial, type TestimonialProps } from './components/Testimonial/Tes
 export { Table, type TableProps, type ColumnDefinitionType } from './components/Table/Table';
 export { TextImage, type TextImageProps } from './components/TextImage/TextImage';
 export type { TextImageContentProps, ImageMode } from './components/TextImage/TextImageContent';
+export { TextMedia, type TextMediaProps } from './components/TextMedia/TextMedia';
+export type { TextMediaContentProps } from './components/TextMedia/TextMediaContent';
+export type { TextMediaMediaProps } from './components/TextMedia/TextMediaMedia';
 export { Timeline, type TimelineProps } from './components/Timeline/Timeline';
 export type { TimelineItemProps } from './components/Timeline/TimelineItem';
 

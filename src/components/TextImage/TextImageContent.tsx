@@ -12,6 +12,7 @@ export interface TextImageContentProps {
   metaData?: React.ReactNode;
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'primary';
   isCenter?: boolean;
+  align?: 'top' | 'center';
   isWhite?: boolean;
   noUnderline?: boolean;
   pronoun?: string;
@@ -34,6 +35,7 @@ export const TextImageContent = ({
   metaData,
   size,
   isCenter,
+  align = 'center',
   isWhite,
   noUnderline,
   pronoun,
@@ -48,9 +50,11 @@ export const TextImageContent = ({
   const defaultSize = size ?? (headerType === 'h1' ? 'primary' : 'lg');
   const isAspect = imageMode !== 'stretch';
 
+  const effectiveAlign = isCenter ? 'center' : align;
+
   const contentClasses = [
     'cu-textimage__content',
-    isCenter ? 'cu-textimage__content--center' : undefined,
+    effectiveAlign === 'top' ? 'cu-textimage__content--top' : undefined,
   ]
     .filter(Boolean)
     .join(' ');
