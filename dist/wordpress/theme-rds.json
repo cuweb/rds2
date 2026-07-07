@@ -71,7 +71,7 @@
         },
         {
           "slug": "custom-white-to-pale-grey",
-          "gradient": "linear-gradient(135deg,rgb(250,250,250) 0%,rgb(240,240,240) 100%)",
+          "gradient": "linear-gradient(135deg,rgb(250,250,250) 0%,rgb(245,245,245) 90%)",
           "name": "White To Pale Grey"
         }
       ]
@@ -466,6 +466,11 @@
       "link": {
         "color": {
           "text": "var(--wp--preset--color--primary-dark)"
+        },
+        ":hover": {
+          "color": {
+            "text": "#026BC8"
+          }
         }
       }
     }
